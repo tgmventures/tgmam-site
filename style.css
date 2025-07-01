@@ -49,7 +49,7 @@ body {
     width: 100%;
     height: 100%;
     background: url('https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-warehouse.jpg?raw=true') no-repeat center center/cover;
-    opacity: 0.12;
+    opacity: 0.08;
     z-index: -1;
     animation: subtleBreath 20s ease-in-out infinite alternate;
 }
@@ -71,13 +71,13 @@ body {
 
 /* Logo */
 .logo {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     animation: logoAppear 2.5s ease-out;
 }
 
 .logo img {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(255,255,255,0.15));
     transition: all 0.6s ease;
@@ -101,10 +101,10 @@ body {
 
 /* Main Text */
 .main-text {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 300;
     letter-spacing: -1px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     color: #ffffff;
     animation: textReveal 2s ease-out 0.8s both;
 }
@@ -120,58 +120,45 @@ body {
     }
 }
 
-/* Categories */
-.categories {
+/* Asset Sections */
+.asset-sections {
     display: flex;
-    gap: 80px;
+    gap: 40px;
     align-items: center;
     justify-content: center;
 }
 
-.category {
-    opacity: 0;
-    animation: categoryFadeIn 1.5s ease-out both;
-}
-
-.category:nth-child(1) { animation-delay: 1.8s; }
-.category:nth-child(2) { animation-delay: 2.2s; }
-.category:nth-child(3) { animation-delay: 2.6s; }
-
-.category-text {
-    font-size: 16px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.5px;
-    transition: all 0.4s ease;
-    cursor: default;
+.asset-section {
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    opacity: 0;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
 }
 
-.category-text::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background: rgba(255,255,255,0.4);
-    transition: width 0.4s ease;
+.asset-section:nth-child(1) { animation: sectionAppear 1.5s ease-out 2s both; }
+.asset-section:nth-child(2) { animation: sectionAppear 1.5s ease-out 2.3s both; }
+.asset-section:nth-child(3) { animation: sectionAppear 1.5s ease-out 2.6s both; }
+
+.asset-section:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.2);
 }
 
-.category-text:hover {
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-.category-text:hover::after {
-    width: 100%;
-}
-
-@keyframes categoryFadeIn {
+@keyframes sectionAppear {
     0% {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(30px);
     }
     100% {
         opacity: 1;
@@ -179,46 +166,178 @@ body {
     }
 }
 
+.section-animation {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.section-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.5px;
+}
+
+/* Real Estate Animation */
+.building-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    width: 80px;
+    height: 60px;
+}
+
+.building-block {
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    animation: buildingPulse 3s ease-in-out infinite;
+}
+
+.building-block:nth-child(1) { animation-delay: 0s; }
+.building-block:nth-child(2) { animation-delay: 0.5s; }
+.building-block:nth-child(3) { animation-delay: 1s; }
+.building-block:nth-child(4) { animation-delay: 1.5s; }
+.building-block:nth-child(5) { animation-delay: 2s; }
+.building-block:nth-child(6) { animation-delay: 2.5s; }
+
+@keyframes buildingPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Businesses Animation */
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 60px;
+    width: 80px;
+}
+
+.chart-bar {
+    flex: 1;
+    background: linear-gradient(to top, rgba(255,255,255,0.2), rgba(255,255,255,0.6));
+    border-radius: 2px 2px 0 0;
+    animation: chartGrow 2s ease-out infinite;
+}
+
+.chart-bar:nth-child(1) { animation-delay: 0s; }
+.chart-bar:nth-child(2) { animation-delay: 0.2s; }
+.chart-bar:nth-child(3) { animation-delay: 0.4s; }
+.chart-bar:nth-child(4) { animation-delay: 0.6s; }
+.chart-bar:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes chartGrow {
+    0% { transform: scaleY(0.3); opacity: 0.4; }
+    50% { transform: scaleY(1.1); opacity: 0.9; }
+    100% { transform: scaleY(1); opacity: 0.6; }
+}
+
+/* Digital Assets Matrix Animation */
+.matrix-container {
+    display: flex;
+    gap: 8px;
+    height: 80px;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.matrix-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    animation: matrixFlow 2s linear infinite;
+}
+
+.matrix-column:nth-child(1) { animation-delay: 0s; }
+.matrix-column:nth-child(2) { animation-delay: 0.5s; }
+.matrix-column:nth-child(3) { animation-delay: 1s; }
+.matrix-column:nth-child(4) { animation-delay: 1.5s; }
+
+.matrix-column span {
+    color: #00ff41;
+    text-shadow: 0 0 10px #00ff41;
+    opacity: 0;
+    animation: matrixDigit 2s linear infinite;
+}
+
+.matrix-column span:nth-child(1) { animation-delay: 0s; }
+.matrix-column span:nth-child(2) { animation-delay: 0.2s; }
+.matrix-column span:nth-child(3) { animation-delay: 0.4s; }
+.matrix-column span:nth-child(4) { animation-delay: 0.6s; }
+.matrix-column span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes matrixFlow {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(10px); }
+}
+
+@keyframes matrixDigit {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
-    .categories {
-        gap: 60px;
+    .asset-sections {
+        gap: 30px;
+    }
+    
+    .asset-section {
+        width: 180px;
+        height: 180px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 15px;
     }
     
     .logo {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
     
     .logo img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
     
     .main-text {
-        font-size: 36px;
+        font-size: 32px;
         margin-bottom: 40px;
     }
     
-    .categories {
+    .asset-sections {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
     }
     
-    .category-text {
-        font-size: 18px;
+    .asset-section {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .section-animation {
+        height: 100px;
+        margin-bottom: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .logo img {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
     }
     
     .main-text {
@@ -226,11 +345,16 @@ body {
         margin-bottom: 35px;
     }
     
-    .categories {
-        gap: 25px;
+    .asset-section {
+        width: 140px;
+        height: 140px;
     }
     
-    .category-text {
-        font-size: 16px;
+    .section-animation {
+        height: 80px;
+    }
+    
+    .section-label {
+        font-size: 12px;
     }
 }
