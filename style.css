@@ -66,12 +66,12 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
 }
 
 /* Logo */
 .logo {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     animation: logoAppear 2.5s ease-out;
 }
 
@@ -104,7 +104,7 @@ body {
     font-size: 48px;
     font-weight: 300;
     letter-spacing: -1px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     color: #ffffff;
     animation: textReveal 2s ease-out 0.8s both;
 }
@@ -123,7 +123,7 @@ body {
 /* Categories */
 .categories {
     display: flex;
-    gap: 120px;
+    gap: 80px;
     align-items: center;
     justify-content: center;
 }
@@ -138,7 +138,7 @@ body {
 .category:nth-child(3) { animation-delay: 2.6s; }
 
 .category-text {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: rgba(255,255,255,0.7);
     letter-spacing: 0.5px;
@@ -182,17 +182,17 @@ body {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .categories {
-        gap: 80px;
+        gap: 60px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 30px 20px;
+        padding: 20px;
     }
     
     .logo {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
     
     .logo img {
@@ -202,16 +202,16 @@ body {
     
     .main-text {
         font-size: 36px;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
     
     .categories {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
     }
     
     .category-text {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
@@ -223,14 +223,14 @@ body {
     
     .main-text {
         font-size: 28px;
-        margin-bottom: 50px;
+        margin-bottom: 35px;
     }
     
     .categories {
-        gap: 35px;
+        gap: 25px;
     }
     
     .category-text {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
