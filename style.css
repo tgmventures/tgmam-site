@@ -27,6 +27,10 @@
     src: url(https://img1.wsimg.com/gfonts/s/poppins/v22/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -40,15 +44,7 @@ body {
     height: 100vh;
     text-align: center;
     position: relative;
-}
-
-.logo img {
-    width: 150px;
-    height: 150px;
-    max-width: 150px;
-    max-height: 150px;
-    object-fit: contain;
-    display: block;
+    overflow: hidden;
 }
 
 .background {
@@ -60,10 +56,245 @@ body {
     background: url('https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-warehouse.jpg?raw=true') no-repeat center center/cover;
     opacity: 0.3;
     z-index: -1;
+    animation: subtleParallax 20s ease-in-out infinite alternate;
+}
+
+@keyframes subtleParallax {
+    0% { transform: scale(1) translateX(0); }
+    100% { transform: scale(1.02) translateX(-10px); }
+}
+
+/* Geometric Accents */
+.geometric-accents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.accent {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.accent-1 {
+    width: 120px;
+    height: 120px;
+    top: 15%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.accent-2 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 8%;
+    animation: float 12s ease-in-out infinite reverse;
+}
+
+.accent-3 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    animation: float 10s ease-in-out infinite;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    25% { transform: translateY(-20px) rotate(90deg); opacity: 0.6; }
+    50% { transform: translateY(-10px) rotate(180deg); opacity: 0.4; }
+    75% { transform: translateY(-30px) rotate(270deg); opacity: 0.7; }
+}
+
+/* Floating Asset Icons */
+.floating-assets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.asset-icon {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.6;
+    filter: grayscale(50%);
+    transition: all 0.3s ease;
+}
+
+.real-estate {
+    top: 25%;
+    left: 12%;
+    animation: gentleFloat 15s ease-in-out infinite;
+}
+
+.business {
+    bottom: 30%;
+    right: 12%;
+    animation: gentleFloat 18s ease-in-out infinite reverse;
+    animation-delay: -6s;
+}
+
+.alternative {
+    top: 70%;
+    left: 20%;
+    animation: gentleFloat 12s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(5deg); }
+    66% { transform: translateY(-8px) rotate(-3deg); }
+}
+
+/* Main Content */
+.main-content {
+    z-index: 10;
+    position: relative;
+}
+
+.logo {
+    animation: logoEntrance 2s ease-out;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    60% {
+        opacity: 0.8;
+        transform: scale(1.05) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .text {
     font-size: 36px;
     font-weight: 600;
     margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Typewriter Effect */
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    animation: typewriter 3s steps(16) 1.5s forwards, 
+               blink 1s step-end infinite 1.5s;
+    width: 0;
+}
+
+@keyframes typewriter {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: rgba(255, 255, 255, 0.8); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* Tagline */
+.tagline {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 4s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .text {
+        font-size: 28px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 120px;
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .tagline {
+        font-size: 14px;
+        padding: 0 20px;
+    }
+    
+    .asset-icon {
+        font-size: 20px;
+    }
+    
+    .accent-1 { width: 80px; height: 80px; }
+    .accent-2 { width: 60px; height: 60px; }
+    .accent-3 { width: 40px; height: 40px; }
+}
+
+@media (max-width: 480px) {
+    .text {
+        font-size: 24px;
+    }
+    
+    .logo img {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    .tagline {
+        font-size: 12px;
+    }
+    
+    .floating-assets {
+        display: none; /* Hide floating assets on very small screens */
+    }
 }
