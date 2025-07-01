@@ -10,6 +10,12 @@
 <body>
     <div class="background"></div>
     
+    <!-- Investor Login Link -->
+    <div class="investor-link">
+        <button onclick="openLoginModal()" class="login-btn">Investors</button>
+    </div>
+    
+    <!-- Main Content -->
     <div class="container">
         <div class="logo">
             <img src="https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-logo-icon.png?raw=true" alt="TGM">
@@ -67,5 +73,55 @@
             </div>
         </div>
     </div>
+    
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Investor Portal</h2>
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <div id="loginMessage" class="login-message"></div>
+        </div>
+    </div>
+    
+    <script>
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('loginMessage').textContent = '';
+        }
+        
+        function handleLogin(event) {
+            event.preventDefault();
+            const messageEl = document.getElementById('loginMessage');
+            messageEl.textContent = 'Access credentials not recognized. Please contact your relationship manager.';
+            messageEl.style.display = 'block';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                closeLoginModal();
+            }
+        }
+    </script>
 </body>
 </html>

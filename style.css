@@ -19,13 +19,6 @@
     font-display: swap;
     src: url(https://img1.wsimg.com/gfonts/s/poppins/v22/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2) format('woff2');
 }
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(https://img1.wsimg.com/gfonts/s/poppins/v22/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
-}
 
 * {
     box-sizing: border-box;
@@ -51,14 +44,57 @@ body {
     background: url('https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-warehouse.jpg?raw=true') no-repeat center center/cover;
     opacity: 0.08;
     z-index: -1;
-    animation: subtleBreath 20s ease-in-out infinite alternate;
+    animation: premiumBreath 25s ease-in-out infinite alternate;
 }
 
-@keyframes subtleBreath {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.02); }
+@keyframes premiumBreath {
+    0% { transform: scale(1) translateX(0); }
+    100% { transform: scale(1.01) translateX(-5px); }
 }
 
+/* Investor Login Link */
+.investor-link {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 100;
+    animation: linkAppear 2s ease-out 3s both;
+}
+
+.login-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.login-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+@keyframes linkAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Container */
 .container {
     display: flex;
     flex-direction: column;
@@ -66,295 +102,291 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
 }
 
 /* Logo */
 .logo {
-    margin-bottom: 30px;
-    animation: logoAppear 2.5s ease-out;
+    margin-bottom: 50px;
+    animation: logoMajesticEntrance 3s ease-out;
 }
 
 .logo img {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(255,255,255,0.15));
-    transition: all 0.6s ease;
+    filter: drop-shadow(0 0 50px rgba(255,255,255,0.12));
+    transition: all 0.8s ease;
 }
 
 .logo img:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0 0 60px rgba(255,255,255,0.25));
+    transform: scale(1.01);
+    filter: drop-shadow(0 0 70px rgba(255,255,255,0.18));
 }
 
-@keyframes logoAppear {
+@keyframes logoMajesticEntrance {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: scale(0.9) translateY(40px);
+        filter: blur(8px) drop-shadow(0 0 0 transparent);
+    }
+    60% {
+        opacity: 0.8;
+        transform: scale(1.02) translateY(-8px);
+        filter: blur(2px) drop-shadow(0 0 30px rgba(255,255,255,0.1));
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1) translateY(0);
+        filter: blur(0px) drop-shadow(0 0 50px rgba(255,255,255,0.12));
     }
 }
 
 /* Main Text */
 .main-text {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 300;
-    letter-spacing: -1px;
-    margin-bottom: 50px;
+    letter-spacing: -1.5px;
     color: #ffffff;
-    animation: textReveal 2s ease-out 0.8s both;
+    animation: textElegantReveal 2.5s ease-out 1.2s both;
+    text-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
 
-@keyframes textReveal {
+@keyframes textElegantReveal {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
+        letter-spacing: 8px;
     }
     100% {
         opacity: 1;
         transform: translateY(0);
+        letter-spacing: -1.5px;
     }
 }
 
-/* Asset Sections */
-.asset-sections {
-    display: flex;
-    gap: 40px;
+/* Login Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
     align-items: center;
     justify-content: center;
+    animation: modalFadeIn 0.3s ease-out;
 }
 
-.asset-section {
-    width: 200px;
-    height: 200px;
-    background: rgba(255,255,255,0.02);
+@keyframes modalFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(145deg, rgba(20,20,20,0.95), rgba(10,10,10,0.98));
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    opacity: 0;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
+    padding: 40px;
+    width: 420px;
+    max-width: 90vw;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: modalSlideIn 0.4s ease-out;
 }
 
-.asset-section:nth-child(1) { animation: sectionAppear 1.5s ease-out 2s both; }
-.asset-section:nth-child(2) { animation: sectionAppear 1.5s ease-out 2.3s both; }
-.asset-section:nth-child(3) { animation: sectionAppear 1.5s ease-out 2.6s both; }
-
-.asset-section:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(255,255,255,0.2);
-}
-
-@keyframes sectionAppear {
+@keyframes modalSlideIn {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px) scale(0.95);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
-.section-animation {
-    width: 100%;
-    height: 120px;
+.modal-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    overflow: hidden;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.section-label {
-    font-size: 14px;
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
     font-weight: 400;
-    color: rgba(255,255,255,0.8);
+    color: #ffffff;
     letter-spacing: 0.5px;
 }
 
-/* Real Estate Animation */
-.building-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 8px;
-    width: 80px;
-    height: 60px;
+.close {
+    color: rgba(255,255,255,0.6);
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
 }
 
-.building-block {
-    background: rgba(255,255,255,0.3);
-    border-radius: 2px;
-    animation: buildingPulse 3s ease-in-out infinite;
+.close:hover {
+    color: #ffffff;
 }
 
-.building-block:nth-child(1) { animation-delay: 0s; }
-.building-block:nth-child(2) { animation-delay: 0.5s; }
-.building-block:nth-child(3) { animation-delay: 1s; }
-.building-block:nth-child(4) { animation-delay: 1.5s; }
-.building-block:nth-child(5) { animation-delay: 2s; }
-.building-block:nth-child(6) { animation-delay: 2.5s; }
-
-@keyframes buildingPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-/* Businesses Animation */
-.chart-container {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    height: 60px;
-    width: 80px;
-}
-
-.chart-bar {
-    flex: 1;
-    background: linear-gradient(to top, rgba(255,255,255,0.2), rgba(255,255,255,0.6));
-    border-radius: 2px 2px 0 0;
-    animation: chartGrow 2s ease-out infinite;
-}
-
-.chart-bar:nth-child(1) { animation-delay: 0s; }
-.chart-bar:nth-child(2) { animation-delay: 0.2s; }
-.chart-bar:nth-child(3) { animation-delay: 0.4s; }
-.chart-bar:nth-child(4) { animation-delay: 0.6s; }
-.chart-bar:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes chartGrow {
-    0% { transform: scaleY(0.3); opacity: 0.4; }
-    50% { transform: scaleY(1.1); opacity: 0.9; }
-    100% { transform: scaleY(1); opacity: 0.6; }
-}
-
-/* Digital Assets Matrix Animation */
-.matrix-container {
-    display: flex;
-    gap: 8px;
-    height: 80px;
-    align-items: center;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.matrix-column {
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    animation: matrixFlow 2s linear infinite;
+    gap: 25px;
 }
 
-.matrix-column:nth-child(1) { animation-delay: 0s; }
-.matrix-column:nth-child(2) { animation-delay: 0.5s; }
-.matrix-column:nth-child(3) { animation-delay: 1s; }
-.matrix-column:nth-child(4) { animation-delay: 1.5s; }
-
-.matrix-column span {
-    color: #00ff41;
-    text-shadow: 0 0 10px #00ff41;
-    opacity: 0;
-    animation: matrixDigit 2s linear infinite;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.matrix-column span:nth-child(1) { animation-delay: 0s; }
-.matrix-column span:nth-child(2) { animation-delay: 0.2s; }
-.matrix-column span:nth-child(3) { animation-delay: 0.4s; }
-.matrix-column span:nth-child(4) { animation-delay: 0.6s; }
-.matrix-column span:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes matrixFlow {
-    0% { transform: translateY(-10px); }
-    100% { transform: translateY(10px); }
+.form-group label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.3px;
 }
 
-@keyframes matrixDigit {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+.form-group input {
+    padding: 15px 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+}
+
+.form-group input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.submit-btn {
+    padding: 16px 24px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+.login-message {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(220,53,69,0.1);
+    border: 1px solid rgba(220,53,69,0.3);
+    border-radius: 6px;
+    color: #ff6b7a;
+    font-size: 14px;
+    text-align: center;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .asset-sections {
-        gap: 30px;
+@media (max-width: 768px) {
+    .investor-link {
+        top: 20px;
+        right: 20px;
     }
     
-    .asset-section {
-        width: 180px;
-        height: 180px;
+    .login-btn {
+        padding: 10px 18px;
+        font-size: 13px;
     }
-}
-
-@media (max-width: 768px) {
+    
     .container {
-        padding: 15px;
+        padding: 30px 20px;
     }
     
     .logo {
-        margin-bottom: 25px;
-    }
-    
-    .logo img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .main-text {
-        font-size: 32px;
         margin-bottom: 40px;
     }
     
-    .asset-sections {
-        flex-direction: column;
-        gap: 25px;
+    .logo img {
+        width: 130px;
+        height: 130px;
     }
     
-    .asset-section {
-        width: 160px;
-        height: 160px;
+    .main-text {
+        font-size: 38px;
     }
     
-    .section-animation {
-        height: 100px;
-        margin-bottom: 15px;
+    .modal-content {
+        padding: 30px 25px;
+        width: 380px;
+    }
+    
+    .modal-header h2 {
+        font-size: 22px;
     }
 }
 
 @media (max-width: 480px) {
     .logo img {
-        width: 90px;
-        height: 90px;
+        width: 110px;
+        height: 110px;
     }
     
     .main-text {
-        font-size: 28px;
-        margin-bottom: 35px;
+        font-size: 32px;
+        letter-spacing: -1px;
     }
     
-    .asset-section {
-        width: 140px;
-        height: 140px;
+    .modal-content {
+        padding: 25px 20px;
+        width: 340px;
     }
     
-    .section-animation {
-        height: 80px;
+    .form-group input {
+        padding: 12px 15px;
+        font-size: 15px;
     }
     
-    .section-label {
-        font-size: 12px;
+    .submit-btn {
+        padding: 14px 20px;
+        font-size: 15px;
     }
 }
