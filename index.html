@@ -10,6 +10,9 @@
 <body>
     <div class="background"></div> <!-- Background image -->
 
+    <!-- Investors Button -->
+    <button class="investors-btn" onclick="openModal()">Investors</button>
+
     <div class="logo">
         <img src="https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-logo-icon.png?raw=true" alt="TGM Logo">
     </div>
@@ -17,5 +20,59 @@
     <div class="text">
         Asset Management
     </div>
+
+    <div class="tagline">
+        Real Estate. Businesses. Digital Assets.
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Investor Portal</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <div id="errorMessage" class="error-message" style="display: none;">
+                No user found. Please check your credentials.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('loginForm').reset();
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            // Show the "no user found" message
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
