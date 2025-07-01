@@ -34,17 +34,12 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    background: #000000;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     height: 100vh;
-    text-align: center;
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
 .background {
@@ -54,326 +49,49 @@ body {
     width: 100%;
     height: 100%;
     background: url('https://github.com/tgmventures/tgmam-site/blob/main/images/tgm-warehouse.jpg?raw=true') no-repeat center center/cover;
-    opacity: 0.15;
-    z-index: -2;
-    animation: premiumParallax 30s ease-in-out infinite alternate;
-    filter: contrast(1.2) brightness(0.8);
+    opacity: 0.12;
+    z-index: -1;
+    animation: subtleBreath 20s ease-in-out infinite alternate;
 }
 
-@keyframes premiumParallax {
-    0% { transform: scale(1.05) translateX(0); }
-    100% { transform: scale(1.08) translateX(-20px); }
+@keyframes subtleBreath {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
 }
 
-/* Premium Data Visualization Overlay */
-.data-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.4;
-}
-
-.market-grid {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.grid-line {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    animation: gridPulse 8s ease-in-out infinite;
-}
-
-.grid-line.horizontal {
-    width: 100%;
-    height: 1px;
-}
-
-.grid-line.vertical {
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(0deg, transparent, rgba(255,255,255,0.1), transparent);
-}
-
-@keyframes gridPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-}
-
-.data-point {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #00ff88;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #00ff88;
-    animation: dataPointPulse 3s ease-in-out infinite;
-}
-
-.data-point::before {
-    content: attr(data-value);
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 10px;
-    font-weight: 600;
-    color: #00ff88;
-    white-space: nowrap;
-    text-shadow: 0 0 10px rgba(0,255,136,0.5);
-}
-
-@keyframes dataPointPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 15px #00ff88; }
-    50% { transform: scale(1.5); box-shadow: 0 0 25px #00ff88; }
-}
-
-.trend-line {
-    position: absolute;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00ff88, transparent);
-    animation: trendFlow 6s ease-in-out infinite;
-}
-
-.trend-1 {
-    top: 30%;
-    left: 10%;
-    width: 35%;
-    transform: rotate(15deg);
-}
-
-.trend-2 {
-    bottom: 25%;
-    right: 15%;
-    width: 40%;
-    transform: rotate(-10deg);
-    animation-delay: -3s;
-}
-
-@keyframes trendFlow {
-    0%, 100% { opacity: 0.6; transform: translateX(0) rotate(15deg); }
-    50% { opacity: 1; transform: translateX(10px) rotate(15deg); }
-}
-
-/* Institutional Asset Class Indicators */
-.asset-indicators {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    z-index: 5;
+.container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.indicator {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-    animation: indicatorSlideIn 2s ease-out;
-    opacity: 0;
-    animation-fill-mode: forwards;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 40px;
 }
 
-.real-estate-indicator { animation-delay: 1s; }
-.business-indicator { animation-delay: 1.5s; }
-.alternative-indicator { animation-delay: 2s; }
-
-@keyframes indicatorSlideIn {
-    0% { opacity: 0; transform: translateX(50px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-
-.indicator-icon {
-    font-size: 16px;
-    color: #00ff88;
-    font-weight: bold;
-}
-
-.indicator-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.8);
-    min-width: 80px;
-    text-align: left;
-}
-
-.indicator-value {
-    font-size: 12px;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-/* Premium Corner Accents */
-.corner-accents {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.corner-accent {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(0,255,136,0.3);
-}
-
-.corner-accent.top-left {
-    top: 30px;
-    left: 30px;
-    border-right: none;
-    border-bottom: none;
-    animation: cornerGlow 4s ease-in-out infinite;
-}
-
-.corner-accent.top-right {
-    top: 30px;
-    right: 30px;
-    border-left: none;
-    border-bottom: none;
-    animation: cornerGlow 4s ease-in-out infinite;
-    animation-delay: -1s;
-}
-
-.corner-accent.bottom-left {
-    bottom: 30px;
-    left: 30px;
-    border-right: none;
-    border-top: none;
-    animation: cornerGlow 4s ease-in-out infinite;
-    animation-delay: -2s;
-}
-
-.corner-accent.bottom-right {
-    bottom: 30px;
-    right: 30px;
-    border-left: none;
-    border-top: none;
-    animation: cornerGlow 4s ease-in-out infinite;
-    animation-delay: -3s;
-}
-
-@keyframes cornerGlow {
-    0%, 100% { opacity: 0.3; box-shadow: none; }
-    50% { opacity: 1; box-shadow: 0 0 20px rgba(0,255,136,0.5); }
-}
-
-/* Main Content */
-.main-content {
-    z-index: 10;
-    position: relative;
-}
-
-.logo-container {
-    position: relative;
-    margin-bottom: 40px;
-}
-
+/* Logo */
 .logo {
-    position: relative;
-    z-index: 2;
-    animation: logoMajesticEntrance 3s ease-out;
+    margin-bottom: 60px;
+    animation: logoAppear 2.5s ease-out;
 }
 
 .logo img {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
-    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 40px rgba(255,255,255,0.15));
+    transition: all 0.6s ease;
 }
 
 .logo img:hover {
     transform: scale(1.02);
-    filter: drop-shadow(0 0 40px rgba(0,255,136,0.6));
+    filter: drop-shadow(0 0 60px rgba(255,255,255,0.25));
 }
 
-.logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
-    animation: logoGlowPulse 6s ease-in-out infinite;
-    z-index: 1;
-}
-
-@keyframes logoMajesticEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(0.7) translateY(50px);
-        filter: blur(10px);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.1) translateY(-10px);
-        filter: blur(2px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-        filter: blur(0px);
-    }
-}
-
-@keyframes logoGlowPulse {
-    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-/* Title Section */
-.title-section {
-    margin-bottom: 50px;
-}
-
-.main-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.title-line-1 {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    color: #ffffff;
-    text-shadow: 0 0 20px rgba(255,255,255,0.3);
-    animation: titleReveal 2s ease-out 1s both;
-}
-
-.title-line-2 {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 12px;
-    color: rgba(255,255,255,0.9);
-    margin-top: 5px;
-    animation: titleReveal 2s ease-out 1.5s both;
-}
-
-@keyframes titleReveal {
+@keyframes logoAppear {
     0% {
         opacity: 0;
         transform: translateY(30px);
-        letter-spacing: 20px;
     }
     100% {
         opacity: 1;
@@ -381,148 +99,138 @@ body {
     }
 }
 
-.subtitle {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 3px;
-    color: #00ff88;
-    text-transform: uppercase;
-    animation: subtitleFade 1.5s ease-out 2.5s both;
+/* Main Text */
+.main-text {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 80px;
+    color: #ffffff;
+    animation: textReveal 2s ease-out 0.8s both;
 }
 
-@keyframes subtitleFade {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Performance Banner */
-.performance-banner {
+/* Categories */
+.categories {
     display: flex;
+    gap: 120px;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 20px 40px;
-    background: rgba(0,0,0,0.6);
-    border: 1px solid rgba(0,255,136,0.3);
-    border-radius: 50px;
-    backdrop-filter: blur(15px);
-    animation: bannerSlideUp 2s ease-out 3s both;
 }
 
-@keyframes bannerSlideUp {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
+.category {
+    opacity: 0;
+    animation: categoryFadeIn 1.5s ease-out both;
 }
 
-.performance-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+.category:nth-child(1) { animation-delay: 1.8s; }
+.category:nth-child(2) { animation-delay: 2.2s; }
+.category:nth-child(3) { animation-delay: 2.6s; }
+
+.category-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    cursor: default;
+    position: relative;
 }
 
-.perf-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.6);
-}
-
-.perf-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0,255,136,0.3);
-}
-
-.performance-divider {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(0deg, transparent, rgba(255,255,255,0.3), transparent);
-}
-
-/* Ambient Pulse */
-.ambient-pulse {
+.category-text::after {
+    content: '';
     position: absolute;
-    top: 50%;
+    bottom: -8px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(0,255,136,0.02) 0%, transparent 70%);
-    animation: ambientPulse 12s ease-in-out infinite;
-    z-index: -1;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.4);
+    transition: width 0.4s ease;
 }
 
-@keyframes ambientPulse {
-    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+.category-text:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.category-text:hover::after {
+    width: 100%;
+}
+
+@keyframes categoryFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .asset-indicators {
-        top: 30px;
-        right: 30px;
-        gap: 15px;
+@media (max-width: 1200px) {
+    .categories {
+        gap: 80px;
     }
-    
-    .indicator {
-        padding: 8px 15px;
-    }
-    
-    .indicator-label { font-size: 9px; min-width: 70px; }
-    .indicator-value { font-size: 11px; }
 }
 
 @media (max-width: 768px) {
-    .title-line-1 { font-size: 36px; letter-spacing: 6px; }
-    .title-line-2 { font-size: 18px; letter-spacing: 8px; }
-    .subtitle { font-size: 12px; letter-spacing: 2px; }
-    
-    .logo img { width: 140px; height: 140px; }
-    .logo-glow { width: 160px; height: 160px; }
-    
-    .performance-banner {
-        gap: 20px;
-        padding: 15px 25px;
+    .container {
+        padding: 30px 20px;
     }
     
-    .perf-value { font-size: 16px; }
-    
-    .asset-indicators {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 30px;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+    .logo {
+        margin-bottom: 50px;
     }
     
-    .corner-accent { display: none; }
-    .data-overlay { opacity: 0.2; }
+    .logo img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .main-text {
+        font-size: 36px;
+        margin-bottom: 60px;
+    }
+    
+    .categories {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .category-text {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .title-line-1 { font-size: 28px; letter-spacing: 4px; }
-    .title-line-2 { font-size: 14px; letter-spacing: 6px; }
-    
-    .logo img { width: 120px; height: 120px; }
-    .logo-glow { width: 140px; height: 140px; }
-    
-    .performance-banner {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
+    .logo img {
+        width: 100px;
+        height: 100px;
     }
     
-    .performance-divider { 
-        width: 60px; 
-        height: 1px; 
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    .main-text {
+        font-size: 28px;
+        margin-bottom: 50px;
     }
     
-    .asset-indicators { display: none; }
-    .data-overlay { display: none; }
+    .categories {
+        gap: 35px;
+    }
+    
+    .category-text {
+        font-size: 18px;
+    }
 }
